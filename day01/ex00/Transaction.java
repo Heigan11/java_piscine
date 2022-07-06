@@ -17,12 +17,7 @@ public class Transaction {
         this.recipient = recipient;
         this.sender = sender;
         this.category = category;
-        if (this.category == Category.DEBITS && amount >= 0 && sender.getBalance() >= amount)
-            this.amount = amount;
-        else if (this.category == Category.CREDITS && amount <= 0 && recipient.getBalance() >= amount * (-1))
-            this.amount = amount;
-        else
-            System.out.println("Wrong transaction");
+        setAmount(amount);
     }
 
     public Integer getAmount() {
