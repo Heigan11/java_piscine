@@ -4,27 +4,26 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import models.Game;
 import parsers.ParametrsParser;
+import parsers.PropertyParser;
 
 import java.util.Properties;
 
 public class Start {
 
-    public static Game game = new Game();
-
     public static void main(String[] args) {
 
         ParametrsParser parametrsParser = new ParametrsParser();
+        PropertyParser propertyParser = new PropertyParser();
 
         JCommander.
                 newBuilder().
                 addObject(parametrsParser).
                 build().
                 parse(args);
-        parametrsParser.setParameters(game);
+        parametrsParser.setParameters();
+        propertyParser.setProperties();
 
-
-
-        System.out.println(game);
+        System.out.println(Game.getInstance());
     }
 }
 

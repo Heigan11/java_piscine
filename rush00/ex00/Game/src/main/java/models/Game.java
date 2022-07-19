@@ -4,11 +4,22 @@ import java.util.Properties;
 
 public class Game {
 
+    private static Game instance;
+
     private Properties properties;
     private int enemiesCount;
     private int wallsCount;
     private int size;
     private String profile;
+
+    private Game() {}
+
+    public static Game getInstance(){
+        if (instance == null) {
+            instance = new Game();
+        }
+        return instance;
+    }
 
     public Properties getProperties() {
         return properties;
@@ -53,7 +64,8 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "enemiesCount=" + enemiesCount +
+                "properties=" + properties +
+                ", enemiesCount=" + enemiesCount +
                 ", wallsCount=" + wallsCount +
                 ", size=" + size +
                 ", profile='" + profile + '\'' +

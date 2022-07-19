@@ -18,10 +18,10 @@ public class ParametrsParser {
     @Parameter(names = "--profile")
     private String profile;
 
-    public void setParameters(Game game){
-        game.setEnemiesCount(enemiesCount);
-        game.setWallsCount(wallsCount);
-        game.setSize(size);
-        game.setProfile(profile);
+    public void setParameters(){
+        Game.getInstance().setEnemiesCount(enemiesCount);
+        Game.getInstance().setWallsCount(wallsCount);
+        Game.getInstance().setSize(size);
+        Game.getInstance().setProfile(profile);
     }
 }
