@@ -43,6 +43,10 @@ public class Player extends MapObject{
         return (Map.getSymbol(x, y, Game.getMap().getMap()) != Wall.getSymbol() && Map.getSymbol(x, y, Game.getMap().getMap()) != Enemy.getSymbol());
     }
 
+    public boolean isCollision(MapObject mapObject){
+        return this.getX() == mapObject.getX() && this.getY() == mapObject.getY();
+    }
+
     public static char getSymbol() {
         return symbol;
     }

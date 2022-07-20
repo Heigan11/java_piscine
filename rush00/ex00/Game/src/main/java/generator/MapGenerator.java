@@ -21,6 +21,12 @@ public class MapGenerator {
                     if (symbol == Player.getSymbol()){
                         Game.getInstance().setPlayer(new Player(x, y));
                     }
+                    if (symbol == Goal.getSymbol()){
+                        Game.setGoal(new Goal(x, y));
+                    }
+                    if (symbol == Enemy.getSymbol()){
+                        Game.setEnemy(new Enemy(x, y));
+                    }
                     break;
                 }
             }

@@ -3,6 +3,8 @@ package models;
 import enaums.Button;
 import exceptions.GameOverException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -17,8 +19,26 @@ public class Game {
     private static String profile;
     private static Map map;
     private static Player player;
+    private static Goal goal;
+    private static List<Enemy> enemies = new ArrayList<>();
 
     private Game() {}
+
+    public List<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public static void setEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public static Goal getGoal() {
+        return goal;
+    }
+
+    public static void setGoal(Goal goal) {
+        Game.goal = goal;
+    }
 
     public Player getPlayer() {
         return player;
@@ -131,16 +151,16 @@ public class Game {
     public void gameOverCheck() {
         nextMovePossibleCheck();
 
-//        if (game.exit.isCollide(game.player)) {
+        if (player.isCollision(goal)) {
 //            game.playerWon = true;
-//            throw new EndGameException();
-//        }
-//
-//        for (Enemy enemy : game.enemies) {
-//            if (enemy.isCollide(game.player)) {
-//                throw new EndGameException();
-//            }
-//        }
+            throw new GameOverException("You won!");
+        }
+
+        for (Enemy enemy : this.getEnemies()) {
+            if (player.isCollision(enemy)) {
+                throw new GameOverException("You lose...");
+            }
+        }
     }
 
     @Override
