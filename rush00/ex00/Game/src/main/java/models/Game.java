@@ -105,9 +105,13 @@ public class Game {
     public static void playersMove() {
         System.out.println("press: A to LEFT, W to UPWARD, D to RIGHT, S to DOWNWARD: ");
         Button button;
+        int oldX = player.getX();
+        int oldY = player.getY();
         while (true) {
             button = getPushedButton();
             if (getPlayerTurn(button)) {
+                map.setSymbol(player.getX(), player.getY(), Player.getSymbol());
+                map.setSymbol(oldX, oldY, Empty.getSymbol());
                 break;
             }
         }

@@ -38,6 +38,10 @@ public class Map {
         return map[y][x];
     }
 
+    public void setSymbol(int x, int y, char symbol){
+        map[y][x] = symbol;
+    }
+
     public void printMap() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
