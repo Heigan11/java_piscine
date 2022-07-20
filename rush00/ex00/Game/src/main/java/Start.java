@@ -12,7 +12,11 @@ import java.util.Properties;
 
 public class Start {
 
+    public static Game game = Game.getInstance();
+
     public static void main(String[] args) {
+
+//        Game game = Game.getInstance();
 
         ParametersParser parametersParser = new ParametersParser();
 
@@ -27,8 +31,10 @@ public class Start {
         ModelsHandler.getInstance().setModelsParameters();
 
         while (true) {
-            Game.getInstance().getMap().printMap();
-            Game.playersMove();
+            game.getMap().printMap();
+            game.gameOverCheck();
+            game.playersMove();
+            game.gameOverCheck();
         }
 
 

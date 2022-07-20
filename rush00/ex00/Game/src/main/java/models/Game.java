@@ -1,7 +1,7 @@
 package models;
 
 import enaums.Button;
-import exceptions.GaveUpException;
+import exceptions.GameOverException;
 
 import java.util.Properties;
 import java.util.Scanner;
@@ -28,7 +28,7 @@ public class Game {
         this.player = player;
     }
 
-    public Map getMap() {
+    public static Map getMap() {
         return map;
     }
 
@@ -92,9 +92,9 @@ public class Game {
         return Button.UNKNOWN;
     }
 
-    public static boolean getPlayerTurn(Button button){
+    public boolean getPlayerTurn(Button button){
         if (button == Button.GIVE_UP){
-            throw new GaveUpException("You are gave up!");
+            throw new GameOverException("You are gave up!");
         }
         if (button == Button.CONFIRM || button == Button.UNKNOWN) {
             return false;
@@ -102,7 +102,7 @@ public class Game {
         return player.getTurn(button, map.getMap());
     }
 
-    public static void playersMove() {
+    public void playersMove() {
         System.out.println("press: A to LEFT, W to UPWARD, D to RIGHT, S to DOWNWARD: ");
         Button button;
         int oldX = player.getX();
@@ -117,6 +117,30 @@ public class Game {
         }
         System.out.println("Pushed button = " + button.getSymbol());
 
+    }
+
+    private void nextMovePossibleCheck() {
+        int x = player.getX();
+        int y = player.getY();
+        if (!(player.isNextMovePossible(x - 1, y) || player.isNextMovePossible(x + 1, y) ||
+                player.isNextMovePossible(x, y - 1) || player.isNextMovePossible(x, y + 1))) {
+            throw new GameOverException("Do not any possible moves");
+        }
+    }
+
+    public void gameOverCheck() {
+        nextMovePossibleCheck();
+
+//        if (game.exit.isCollide(game.player)) {
+//            game.playerWon = true;
+//            throw new EndGameException();
+//        }
+//
+//        for (Enemy enemy : game.enemies) {
+//            if (enemy.isCollide(game.player)) {
+//                throw new EndGameException();
+//            }
+//        }
     }
 
     @Override

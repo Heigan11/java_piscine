@@ -36,8 +36,11 @@ public class Player extends MapObject{
             this.setY(this.getY() + dy);
             return true;
         }
-
         return false;
+    }
+
+    public boolean isNextMovePossible(int x, int y){
+        return (Map.getSymbol(x, y, Game.getMap().getMap()) != Wall.getSymbol() && Map.getSymbol(x, y, Game.getMap().getMap()) != Enemy.getSymbol());
     }
 
     public static char getSymbol() {
