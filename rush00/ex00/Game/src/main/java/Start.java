@@ -3,6 +3,8 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import models.Game;
+import models.Map;
+import models.ModelsHandler;
 import parsers.ParametrsParser;
 import parsers.PropertyParser;
 
@@ -13,7 +15,6 @@ public class Start {
     public static void main(String[] args) {
 
         ParametrsParser parametrsParser = new ParametrsParser();
-        PropertyParser propertyParser = new PropertyParser();
 
         JCommander.
                 newBuilder().
@@ -21,9 +22,13 @@ public class Start {
                 build().
                 parse(args);
         parametrsParser.setParameters();
-        propertyParser.setProperties();
+        PropertyParser.setProperties();
 
         System.out.println(Game.getInstance());
+
+        ModelsHandler.getInstance().setModelsParameters();
+
+        Game.getInstance().getMap().printMap();
     }
 }
 

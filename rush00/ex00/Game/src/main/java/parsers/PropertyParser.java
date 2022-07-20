@@ -8,11 +8,11 @@ import java.util.Properties;
 
 public class PropertyParser {
 
-    private Properties props;
+    private static Properties props;
 
-    public void setProperties() {
+    public static void setProperties() {
         try {
-            InputStream is = getClass().getResourceAsStream("/application-dev.properties");
+            InputStream is = PropertyParser.class.getResourceAsStream("/application-dev.properties");
             props = new Properties();
             props.load(is);
             assert is != null;

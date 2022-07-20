@@ -6,13 +6,31 @@ public class Game {
 
     private static Game instance;
 
-    private Properties properties;
-    private int enemiesCount;
-    private int wallsCount;
-    private int size;
-    private String profile;
+    private static Properties properties;
+    private static int enemiesCount;
+    private static int wallsCount;
+    private static int size;
+    private static String profile;
+    private Map map;
+    private Player player;
 
     private Game() {}
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
 
     public static Game getInstance(){
         if (instance == null) {
@@ -21,11 +39,11 @@ public class Game {
         return instance;
     }
 
-    public Properties getProperties() {
+    public static Properties getProperties() {
         return properties;
     }
 
-    public int getEnemiesCount() {
+    public static int getEnemiesCount() {
         return enemiesCount;
     }
 
@@ -33,7 +51,7 @@ public class Game {
         this.enemiesCount = enemiesCount;
     }
 
-    public int getWallsCount() {
+    public static int getWallsCount() {
         return wallsCount;
     }
 
@@ -41,7 +59,7 @@ public class Game {
         this.wallsCount = wallsCount;
     }
 
-    public int getSize() {
+    public static int getSize() {
         return size;
     }
 
@@ -49,7 +67,7 @@ public class Game {
         this.size = size;
     }
 
-    public String getProfile() {
+    public static String getProfile() {
         return profile;
     }
 
