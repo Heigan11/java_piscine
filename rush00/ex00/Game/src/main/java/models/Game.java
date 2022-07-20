@@ -1,6 +1,10 @@
 package models;
 
+import enaums.Button;
+import exceptions.GaveUpException;
+
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Game {
 
@@ -77,6 +81,37 @@ public class Game {
 
     public void setProperties(Properties properties) {
         this.properties = properties;
+    }
+
+    private static Button getPushedButton(){
+        Scanner scanner = new Scanner(System.in);
+        if (scanner.hasNext()){
+            char symbol = scanner.next().charAt(0);
+            return Button.getButtonBySymbol(symbol);
+        }
+        return Button.UNKNOWN;
+    }
+
+    private static boolean getPlayerTurn(Button button){
+        if (button == Button.GIVE_UP){
+            throw new GaveUpException("You are gave up!");
+        }
+        if (button == Button.CONFIRM || button == Button.UNKNOWN) {
+            return false;
+        }
+
+    }
+
+    public static void playersMove(){
+        System.out.println("press: A to LEFT, W to UPWARD, D to RIGHT, S to DOWNWARD: ");
+        while (true) {
+            Button button = getPushedButton();
+            if (getPlayerTurn(button)){
+                break;
+            }
+        }
+        System.out.println("Pushed button = " + button.getSymbol());
+
     }
 
     @Override

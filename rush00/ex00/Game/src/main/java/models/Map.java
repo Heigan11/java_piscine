@@ -17,7 +17,7 @@ public class Map {
     public Map() {
         this.width = Game.getSize();
         this.height = Game.getSize();
-        this.map = new char[height][width];
+        this.map = MapGenerator.getFilledMap();
     }
 
     public char getSymbol(int x, int y){
@@ -35,7 +35,6 @@ public class Map {
     }
 
     public void printMap() {
-        this.map = MapGenerator.getFilledMap();
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (this.map[y][x] == Empty.getSymbol()) {

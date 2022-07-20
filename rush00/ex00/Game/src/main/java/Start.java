@@ -24,11 +24,15 @@ public class Start {
         parametersParser.setParameters();
         PropertyParser.setProperties();
 
-        System.out.println(Game.getInstance());
-
         ModelsHandler.getInstance().setModelsParameters();
 
-        Game.getInstance().getMap().printMap();
+        while (true) {
+            Game.getInstance().getMap().printMap();
+            Game.playersMove();
+        }
+
+
+
     }
 }
 
