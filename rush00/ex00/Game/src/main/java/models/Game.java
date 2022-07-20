@@ -15,8 +15,8 @@ public class Game {
     private static int wallsCount;
     private static int size;
     private static String profile;
-    private Map map;
-    private Player player;
+    private static Map map;
+    private static Player player;
 
     private Game() {}
 
@@ -92,21 +92,22 @@ public class Game {
         return Button.UNKNOWN;
     }
 
-    private static boolean getPlayerTurn(Button button){
+    public static boolean getPlayerTurn(Button button){
         if (button == Button.GIVE_UP){
             throw new GaveUpException("You are gave up!");
         }
         if (button == Button.CONFIRM || button == Button.UNKNOWN) {
             return false;
         }
-
+        return player.getTurn(button, map.getMap());
     }
 
-    public static void playersMove(){
+    public static void playersMove() {
         System.out.println("press: A to LEFT, W to UPWARD, D to RIGHT, S to DOWNWARD: ");
+        Button button;
         while (true) {
-            Button button = getPushedButton();
-            if (getPlayerTurn(button)){
+            button = getPushedButton();
+            if (getPlayerTurn(button)) {
                 break;
             }
         }

@@ -20,6 +20,10 @@ public class Map {
         this.map = MapGenerator.getFilledMap();
     }
 
+    public char[][] getMap() {
+        return map;
+    }
+
     public char getSymbol(int x, int y){
         if (x < 0 || x >= width || y < 0 || y >= height) {
             return Wall.getSymbol();
