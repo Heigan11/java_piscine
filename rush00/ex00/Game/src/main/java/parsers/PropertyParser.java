@@ -12,11 +12,14 @@ public class PropertyParser {
 
     public static void setProperties() {
         try {
-            InputStream is = PropertyParser.class.getResourceAsStream("/application-dev.properties");
+            InputStream is = PropertyParser.class.getResourceAsStream("/application-" + Game.getProfile() + ".properties");
             props = new Properties();
             props.load(is);
             assert is != null;
             is.close();
+            if (props.getProperty("empty.char").isEmpty()) {
+                props.setProperty("empty.char", " ");
+            }
             Game.getInstance().setProperties(props);
         }
         catch(IOException ioe) {

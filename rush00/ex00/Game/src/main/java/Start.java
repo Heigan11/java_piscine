@@ -5,7 +5,7 @@ import com.beust.jcommander.Parameters;
 import models.Game;
 import models.Map;
 import models.ModelsHandler;
-import parsers.ParametrsParser;
+import parsers.ParametersParser;
 import parsers.PropertyParser;
 
 import java.util.Properties;
@@ -14,14 +14,14 @@ public class Start {
 
     public static void main(String[] args) {
 
-        ParametrsParser parametrsParser = new ParametrsParser();
+        ParametersParser parametersParser = new ParametersParser();
 
         JCommander.
                 newBuilder().
-                addObject(parametrsParser).
+                addObject(parametersParser).
                 build().
                 parse(args);
-        parametrsParser.setParameters();
+        parametersParser.setParameters();
         PropertyParser.setProperties();
 
         System.out.println(Game.getInstance());

@@ -30,6 +30,5 @@ public class ModelsHandler {
 
         Map map = new Map();
         Game.getInstance().setMap(map);
-//        Game.getInstance().setPlayer(new Player());
     }
 }
