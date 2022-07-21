@@ -26,7 +26,12 @@ public class Start {
         parametersParser.setParameters();
         PropertyParser.setProperties();
 
-        ModelsHandler.getInstance().setModelsParameters();
+        try {
+            ModelsHandler.getInstance().setModelsParameters();
+        } catch (IllegalParametersException e) {
+            System.out.println(e.getMessage());
+            System.exit(-1);
+        }
 
         while (true) {
             try {
