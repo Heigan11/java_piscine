@@ -1,4 +1,6 @@
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+import exceptions.IllegalParametersException;
 import models.Game;
 import models.ModelsHandler;
 import parsers.ParametersParser;
@@ -11,12 +13,16 @@ public class Start {
     public static void main(String[] args) {
 
         ParametersParser parametersParser = new ParametersParser();
-
+        try {
         JCommander.
                 newBuilder().
                 addObject(parametersParser).
                 build().
                 parse(args);
+        } catch (ParameterException ex){
+            throw new IllegalParametersException("Not valid parameters");
+        }
+
         parametersParser.setParameters();
         PropertyParser.setProperties();
 
