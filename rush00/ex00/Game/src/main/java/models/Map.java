@@ -2,6 +2,7 @@ package models;
 
 import com.diogonunes.jcdp.color.api.Ansi;
 import com.diogonunes.jcolor.AnsiFormat;
+import com.diogonunes.jcolor.Command;
 import generator.MapGenerator;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
@@ -43,6 +44,11 @@ public class Map {
     }
 
     public void printMap() {
+
+        if (!Game.getProfile().equals("dev")) {
+            System.out.print(colorize(Command.CLEAR_SCREEN()));
+        }
+
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (this.map[y][x] == Empty.getSymbol()) {

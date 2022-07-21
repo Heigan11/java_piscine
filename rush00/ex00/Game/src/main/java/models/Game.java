@@ -135,8 +135,6 @@ public class Game {
                 break;
             }
         }
-        System.out.println("Pushed button = " + button.getSymbol());
-
     }
 
     private void nextMovePossibleCheck() {
@@ -169,6 +167,14 @@ public class Game {
             enemy.getEnemyTurn();
             Game.getMap().setSymbol(oldX, oldY, Empty.getSymbol());
             Game.getMap().setSymbol(enemy.getX(), enemy.getY(), Enemy.getSymbol());
+            if (Game.getProfile().equals("dev")){
+                Game.getMap().printMap();
+                System.out.println("Press 8 to confirm: ");
+                Button button;
+                do {
+                    button = getPushedButton();
+                } while (button.getSymbol() != '8');
+            }
         }
     }
 

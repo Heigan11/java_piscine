@@ -35,7 +35,7 @@ public class ParametersParser {
             throw new IllegalParametersException("Property file not found");
         }
 
-        if (enemiesCount + wallsCount + 2 > size * size || size * size > MAX_MAP_SIZE){
+        if (enemiesCount + wallsCount + 2 > size * size || size > MAX_MAP_SIZE){
             throw new IllegalParametersException("Map parameters is not valid");
         }
     }
