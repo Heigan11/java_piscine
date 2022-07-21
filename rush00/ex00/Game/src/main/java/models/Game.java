@@ -40,7 +40,7 @@ public class Game {
         Game.goal = goal;
     }
 
-    public Player getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
 
@@ -144,7 +144,7 @@ public class Game {
         int y = player.getY();
         if (!(player.isNextMovePossible(x - 1, y) || player.isNextMovePossible(x + 1, y) ||
                 player.isNextMovePossible(x, y - 1) || player.isNextMovePossible(x, y + 1))) {
-            throw new GameOverException("Do not any possible moves");
+            throw new GameOverException("Do not any possible moves. You lose...");
         }
     }
 
@@ -152,7 +152,6 @@ public class Game {
         nextMovePossibleCheck();
 
         if (player.isCollision(goal)) {
-//            game.playerWon = true;
             throw new GameOverException("You won!");
         }
 
@@ -160,6 +159,16 @@ public class Game {
             if (player.isCollision(enemy)) {
                 throw new GameOverException("You lose...");
             }
+        }
+    }
+
+    public void enemiesMove(){
+        for (Enemy enemy : enemies){
+            int oldX = enemy.getX();
+            int oldY = enemy.getY();
+            enemy.getEnemyTurn();
+            Game.getMap().setSymbol(oldX, oldY, Empty.getSymbol());
+            Game.getMap().setSymbol(enemy.getX(), enemy.getY(), Enemy.getSymbol());
         }
     }
 

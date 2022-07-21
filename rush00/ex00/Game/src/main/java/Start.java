@@ -1,22 +1,14 @@
-
 import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
-import com.beust.jcommander.Parameters;
 import models.Game;
-import models.Map;
 import models.ModelsHandler;
 import parsers.ParametersParser;
 import parsers.PropertyParser;
-
-import java.util.Properties;
 
 public class Start {
 
     public static Game game = Game.getInstance();
 
     public static void main(String[] args) {
-
-//        Game game = Game.getInstance();
 
         ParametersParser parametersParser = new ParametersParser();
 
@@ -31,14 +23,18 @@ public class Start {
         ModelsHandler.getInstance().setModelsParameters();
 
         while (true) {
-            game.getMap().printMap();
-            game.gameOverCheck();
-            game.playersMove();
-            game.gameOverCheck();
+            try {
+                Game.getMap().printMap();
+                game.gameOverCheck();
+                game.playersMove();
+                Game.getMap().printMap();
+                game.gameOverCheck();
+                game.enemiesMove();
+            } catch (RuntimeException ex){
+                System.out.println(ex.getMessage());
+                System.exit(0);
+            }
         }
-
-
-
     }
 }
 
