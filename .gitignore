@@ -26,11 +26,11 @@ hs_err_pid*
 target
 .idea/
 .gitignore
+.DS_Store
 
 *.iml
 *.pdf
 *.png
-*.txt
 *.jpg
 *.webp
 
