@@ -70,6 +70,7 @@ public class MapGenerator {
                 queue.add(new Coordinates(x, y + 1));
             }
         }
+        Game.refreshEnemiesList();
         return false;
     }
 

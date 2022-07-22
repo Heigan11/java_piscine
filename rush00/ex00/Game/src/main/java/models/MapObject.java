@@ -1,7 +1,5 @@
 package models;
 
-import com.diogonunes.jcolor.AnsiFormat;
-
 public abstract class MapObject {
 
     private int x;

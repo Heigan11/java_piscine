@@ -1,0 +1,1 @@
+java -jar target/game.jar --enemiesCount=10 --wallsCount=10 --size=30 --profile=production

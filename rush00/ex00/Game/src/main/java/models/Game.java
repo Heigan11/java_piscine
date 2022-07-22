@@ -103,6 +103,10 @@ public class Game {
         this.properties = properties;
     }
 
+    public static void refreshEnemiesList(){
+        enemies.clear();
+    }
+
     private static Button getPushedButton(){
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNext()){

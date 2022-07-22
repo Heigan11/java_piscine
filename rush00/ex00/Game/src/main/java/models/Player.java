@@ -13,9 +13,6 @@ public class Player extends MapObject{
     }
 
     public boolean isCanMove(int x, int y, char[][] map) {
-//        if (x < 0 || x >= Game.getSize() || y < 0 || y >= Game.getSize()) {
-//            return false;
-//        }
         return Map.getSymbol(x, y, map) != Wall.getSymbol();
     }
 
