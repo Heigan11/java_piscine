@@ -60,4 +60,14 @@ public class Chatroom {
     public void setChatMessageList(List<Message> chatroomMessageList) {
         this.chatroomMessageList = chatroomMessageList;
     }
+
+    @Override
+    public String toString() {
+        return "Chatroom{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", owner=" + owner +
+                ", chatroomMessageList=" + chatroomMessageList +
+                '}';
+    }
 }

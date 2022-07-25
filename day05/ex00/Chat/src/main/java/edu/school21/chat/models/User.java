@@ -70,4 +70,15 @@ public class User {
     public void setActiveChatRoomList(List<Chatroom> activeChatroomList) {
         this.activeChatroomList = activeChatroomList;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", listOfCreatedRooms=" + listOfCreatedRooms +
+                ", activeChatroomList=" + activeChatroomList +
+                '}';
+    }
 }
